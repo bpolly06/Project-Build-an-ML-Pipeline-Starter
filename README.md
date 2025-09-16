@@ -15,7 +15,7 @@ In this project you will build such a pipeline.
   * [The configuration](#the-configuration)
   * [Running the entire pipeline or just a selection of steps](#Running-the-entire-pipeline-or-just-a-selection-of-steps)
   * [Pre-existing components](#pre-existing-components)
-  * [URL's](#URL's)
+  * [URL's](#url)
 
 ## Preliminary steps
 
@@ -176,8 +176,8 @@ If you see the any error while running the command:
 
 Please, make sure all steps are using **the same** python version and that you have **conda installed**. Additionally, *mlflow* and *wandb* packages are crucial and should have the same version.
 
-## URL's
-W and B = https://wandb.ai/bpolly88-western-governors-university/nyc_airbnb?nw=nwuserbpolly88
+## URL
+WandB = https://wandb.ai/bpolly88-western-governors-university/nyc_airbnb?nw=nwuserbpolly88
 
 
 ## License
