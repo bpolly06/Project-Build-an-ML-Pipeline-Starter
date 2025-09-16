@@ -24,6 +24,8 @@ _steps = [
 @hydra.main(config_name='config')
 def go(config: DictConfig):
 
+    root_path = hydra.utils.get_original_cwd()    
+
     # Setup the wandb experiment. All runs will be grouped under this name
     os.environ["WANDB_PROJECT"] = config["main"]["project_name"]
     os.environ["WANDB_RUN_GROUP"] = config["main"]["experiment_name"]
@@ -51,9 +53,18 @@ def go(config: DictConfig):
             )
 
         if "basic_cleaning" in active_steps:
-            ##################
-            # Implement here #
-            ##################
+            _ = mlflow.run(
+                os.path.abspath(os.path.join(root_path, "basic_cleaning")),
+                "main",
+                parameters={
+                    "input_artifact": "sample1.csv:latest",
+                    "output_artifact": "clean_sample.csv",
+                    "output_type": "cleaned_sample",
+                    "output_description": "data after basic cleaning",
+                    "min_price": config["etl"]["min_price"],
+                    "max_price": config["etl"]["max_price"]              
+                }
+            )
             pass
 
         if "data_check" in active_steps:
